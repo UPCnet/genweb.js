@@ -18,8 +18,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'ulearn/js/dist',
-    egg: 'ulearn/js'
+    dist: 'genweb/js/dist',
+    egg: 'genweb/js'
   };
 
   // Define the configuration for all the tasks
@@ -38,23 +38,11 @@ module.exports = function (grunt) {
         },
         {
           from: 'tal:attributes="src string:${portal_url}/++components++root',
-          to: 'src="../genweb.core/genweb/core/components'
-        },
-        {
-          from: 'tal:attributes="src string:${portal_url}/++components++ulearn',
-          to: 'src="ulearn/js/components'
+          to: 'src="genweb/js/components'
         },
         {
           from: 'tal:attributes="src string:${portal_url}/++genweb++js',
-          to: 'src="../genweb.theme/genweb/theme/js'
-        },
-        {
-          from: 'tal:attributes="src string:${portal_url}/++ulearn++js',
-          to: 'src="ulearn/js/legacy'
-        },
-        {
-          from: 'tal:attributes="src string:${portal_url}/++ulearn++app',
-          to: 'src="ulearn/js/app'
+          to: 'src="genweb/js/legacy'
         },
         {
           from: 'condition="viewlet/is_devel_mode"',
@@ -67,7 +55,7 @@ module.exports = function (grunt) {
         overwrite: true,
         replacements: [{
           from: 'src="js',
-          to: 'tal:attributes="src string:${portal_url}/++ulearn++dist/js'
+          to: 'tal:attributes="src string:${portal_url}/++genweb++dist/js'
         },
         ]
       }

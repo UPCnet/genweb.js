@@ -1,7 +1,7 @@
 {
-  "name": "genweb.core.components",
+  "name": "genweb.js.components",
   "version": "0.0.1",
-  "homepage": "https://github.com/UPCnet/genweb.core",
+  "homepage": "https://github.com/UPCnet/genweb.js",
   "authors": [
     "Victor Fernandez de Alba <sneridagh@gmail.com>"
   ],
