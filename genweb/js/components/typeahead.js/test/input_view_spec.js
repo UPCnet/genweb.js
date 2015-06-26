@@ -1,5 +1,5 @@
 describe('Input', function() {
-  var KEYS, www;
+  var KEYS;
 
    KEYS = {
     enter: 13,
@@ -12,8 +12,6 @@ describe('Input', function() {
     normal: 65 // "A" key
   };
 
-  www = WWW();
-
   beforeEach(function() {
     var $fixture;
 
@@ -23,19 +21,19 @@ describe('Input', function() {
     this.$input = $fixture.find('.tt-input');
     this.$hint = $fixture.find('.tt-hint');
 
-    this.view = new Input({ input: this.$input, hint: this.$hint }, www).bind();
+    this.view = new Input({ input: this.$input, hint: this.$hint });
   });
 
-  it('should throw an error if no input is provided', function() {
+  it('should throw an error if no hint and/or input is provided', function() {
     expect(noInput).toThrow();
 
-    function noInput() { new Input({}, www); }
+    function noInput() { new Input({ hint: '.hint' }); }
   });
 
   describe('when the blur DOM event is triggered', function() {
     it('should reset the input value', function() {
       this.view.setQuery('wine');
-      this.view.setInputValue('cheese');
+      this.view.setInputValue('cheese', true);
 
       this.$input.blur();
 
@@ -53,14 +51,6 @@ describe('Input', function() {
   });
 
   describe('when the focus DOM event is triggered', function() {
-    it('should update queryWhenFocused', function() {
-      this.view.setQuery('hi');
-      this.$input.focus();
-      expect(this.view.hasQueryChangedSinceLastFocus()).toBe(false);
-      this.view.setQuery('bye');
-      expect(this.view.hasQueryChangedSinceLastFocus()).toBe(true);
-    });
-
     it('should trigger focused', function() {
       var spy;
 
@@ -88,6 +78,17 @@ describe('Input', function() {
       simulateKeyEvent(this.$input, 'keydown', KEYS.tab, true);
 
       expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('should prevent default behavior if there is a hint', function() {
+      var $e;
+
+      this.view.setHint('good');
+      this.view.setInputValue('goo');
+
+      $e = simulateKeyEvent(this.$input, 'keydown', KEYS.tab);
+
+      expect($e.preventDefault).toHaveBeenCalled();
     });
   });
 
@@ -186,7 +187,7 @@ describe('Input', function() {
   describe('when the input DOM event is triggered', function() {
     it('should update query', function() {
       this.view.setQuery('wine');
-      this.view.setInputValue('cheese');
+      this.view.setInputValue('cheese', true);
 
       simulateInputEvent(this.$input);
 
@@ -197,7 +198,7 @@ describe('Input', function() {
       var spy;
 
       this.view.setQuery('wine');
-      this.view.setInputValue('cheese');
+      this.view.setInputValue('cheese', true);
       this.view.onSync('queryChanged', spy = jasmine.createSpy());
 
       simulateInputEvent(this.$input);
@@ -205,53 +206,16 @@ describe('Input', function() {
       expect(spy).toHaveBeenCalled();
     });
 
-    it('should trigger whitespaceChanged if whitespace changed', function() {
+    it('should trigger whitespaceChagned if whitespace changed', function() {
       var spy;
 
       this.view.setQuery('wine  bar');
-      this.view.setInputValue('wine bar');
+      this.view.setInputValue('wine bar', true);
       this.view.onSync('whitespaceChanged', spy = jasmine.createSpy());
 
       simulateInputEvent(this.$input);
 
       expect(spy).toHaveBeenCalled();
-    });
-
-    it('should clear hint if invalid', function() {
-      spyOn(this.view, 'clearHintIfInvalid');
-      simulateInputEvent(this.$input);
-      expect(this.view.clearHintIfInvalid).toHaveBeenCalled();
-    });
-
-    it('should check lang direction', function() {
-      var spy;
-
-      this.$input.css('direction', 'rtl');
-      this.view.onSync('langDirChanged', spy = jasmine.createSpy());
-
-      simulateInputEvent(this.$input);
-
-      expect(this.view.dir).toBe('rtl');
-      expect(this.$hint).toHaveAttr('dir', 'rtl');
-      expect(spy).toHaveBeenCalled();
-    });
-  });
-
-  describe('.normalizeQuery', function() {
-    it('should strip leading whitespace', function() {
-      expect(Input.normalizeQuery('  foo')).toBe('foo');
-    });
-
-    it('should condense whitespace', function() {
-      expect(Input.normalizeQuery('foo   bar')).toBe('foo bar');
-    });
-
-    it('should play nice with non-string values', function() {
-      expect(Input.normalizeQuery(2)).toBe('2');
-      expect(Input.normalizeQuery([])).toBe('');
-      expect(Input.normalizeQuery(null)).toBe('');
-      expect(Input.normalizeQuery(undefined)).toBe('');
-      expect(Input.normalizeQuery(false)).toBe('false');
     });
   });
 
@@ -273,63 +237,10 @@ describe('Input', function() {
     });
   });
 
-  describe('#getQuery', function() {
-    it('should act as getter to the query property', function() {
+  describe('#getQuery/#setQuery', function() {
+    it('should act as getter/setter to the query property', function() {
       this.view.setQuery('mouse');
       expect(this.view.getQuery()).toBe('mouse');
-    });
-  });
-
-  describe('#setQuery', function() {
-    it('should act as setter to the query property', function() {
-      this.view.setQuery('mouse');
-      expect(this.view.getQuery()).toBe('mouse');
-    });
-
-    it('should update input value', function() {
-      this.view.setQuery('mouse');
-      expect(this.view.getInputValue()).toBe('mouse');
-    });
-
-    it('should trigger queryChanged if the query changed', function() {
-      var spy;
-
-      this.view.setQuery('wine');
-      this.view.onSync('queryChanged', spy = jasmine.createSpy());
-      this.view.setQuery('cheese');
-
-      expect(spy).toHaveBeenCalled();
-    });
-
-    it('should trigger whitespaceChanged if whitespace changed', function() {
-      var spy;
-
-      this.view.setQuery('wine   bar');
-      this.view.onSync('whitespaceChanged', spy = jasmine.createSpy());
-      this.view.setQuery('wine bar');
-
-      expect(spy).toHaveBeenCalled();
-    });
-
-    it('should clear hint if invalid', function() {
-      spyOn(this.view, 'clearHintIfInvalid');
-      simulateInputEvent(this.$input);
-      expect(this.view.clearHintIfInvalid).toHaveBeenCalled();
-    });
-  });
-
-  describe('#hasQueryChangedSinceLastFocus', function() {
-    it('should return true if the query has changed since focus', function() {
-      this.view.setQuery('hi');
-      this.$input.focus();
-      this.view.setQuery('bye');
-      expect(this.view.hasQueryChangedSinceLastFocus()).toBe(true);
-    });
-
-    it('should return false if the query has not changed since focus', function() {
-      this.view.setQuery('hi');
-      this.$input.focus();
-      expect(this.view.hasQueryChangedSinceLastFocus()).toBe(false);
     });
   });
 
@@ -346,23 +257,19 @@ describe('Input', function() {
       expect(this.view.getInputValue()).toBe('cheese');
     });
 
-    it('should clear hint if invalid', function() {
-      spyOn(this.view, 'clearHintIfInvalid');
+    it('should trigger {query|whitespace}Changed when applicable', function() {
+      var spy1, spy2;
+
+      this.view.onSync('queryChanged', spy1 = jasmine.createSpy());
+      this.view.onSync('whitespaceChanged', spy2 = jasmine.createSpy());
+
       this.view.setInputValue('cheese head');
-      expect(this.view.clearHintIfInvalid).toHaveBeenCalled();
-    });
+      expect(spy1).toHaveBeenCalled();
+      expect(spy2).not.toHaveBeenCalled();
 
-    it('should check lang direction', function() {
-      var spy;
-
-      this.$input.css('direction', 'rtl');
-      this.view.onSync('langDirChanged', spy = jasmine.createSpy());
-
-      simulateInputEvent(this.$input);
-
-      expect(this.view.dir).toBe('rtl');
-      expect(this.$hint).toHaveAttr('dir', 'rtl');
-      expect(spy).toHaveBeenCalled();
+      this.view.setInputValue('cheese  head');
+      expect(spy1.callCount).toBe(1);
+      expect(spy2).toHaveBeenCalled();
     });
   });
 
@@ -376,7 +283,7 @@ describe('Input', function() {
   describe('#resetInputValue', function() {
     it('should reset input value to last query', function() {
       this.view.setQuery('cheese');
-      this.view.setInputValue('wine');
+      this.view.setInputValue('wine', true);
 
       this.view.resetInputValue();
       expect(this.view.getInputValue()).toBe('cheese');
@@ -394,7 +301,7 @@ describe('Input', function() {
 
   describe('#clearHintIfInvalid', function() {
     it('should clear hint if input value is empty string', function() {
-      this.view.setInputValue('');
+      this.view.setInputValue('', true);
       this.view.setHint('cheese');
       this.view.clearHintIfInvalid();
 
@@ -402,7 +309,7 @@ describe('Input', function() {
     });
 
     it('should clear hint if input value is not prefix of input', function() {
-      this.view.setInputValue('milk');
+      this.view.setInputValue('milk', true);
       this.view.setHint('cheese');
       this.view.clearHintIfInvalid();
 
@@ -411,7 +318,7 @@ describe('Input', function() {
 
     it('should clear hint if overflow exists', function() {
       spyOn(this.view, 'hasOverflow').andReturn(true);
-      this.view.setInputValue('che');
+      this.view.setInputValue('che', true);
       this.view.setHint('cheese');
       this.view.clearHintIfInvalid();
 
@@ -419,11 +326,21 @@ describe('Input', function() {
     });
 
     it('should not clear hint if input value is prefix of input', function() {
-      this.view.setInputValue('che');
+      this.view.setInputValue('che', true);
       this.view.setHint('cheese');
       this.view.clearHintIfInvalid();
 
       expect(this.view.getHint()).toBe('cheese');
+    });
+  });
+
+  describe('#getLanguageDirection', function() {
+    it('should return the language direction of the input', function() {
+      this.$input.css('direction', 'ltr');
+      expect(this.view.getLanguageDirection()).toBe('ltr');
+
+      this.$input.css('direction', 'rtl');
+      expect(this.view.getLanguageDirection()).toBe('rtl');
     });
   });
 
@@ -475,18 +392,12 @@ describe('Input', function() {
       expect($input.off).toHaveBeenCalledWith('.tt');
     });
 
-    it('should set references to DOM elements to dummy element', function() {
-      var $hint, $input, $overflowHelper;
-
-      $hint = this.view.$hint;
-      $input = this.view.$input;
-      $overflowHelper = this.view.$overflowHelper;
-
+    it('should null out its reference to DOM elements', function() {
       this.view.destroy();
 
-      expect(this.view.$hint).not.toBe($hint);
-      expect(this.view.$input).not.toBe($input);
-      expect(this.view.$overflowHelper).not.toBe($overflowHelper);
+      expect(this.view.$hint).toBeNull();
+      expect(this.view.$input).toBeNull();
+      expect(this.view.$overflowHelper).toBeNull();
     });
   });
 

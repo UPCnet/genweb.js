@@ -31,7 +31,7 @@
     "underscore": "~1.7.0",
     "modernizr": "~2.8.3",
     "handlebars": "latest",
-    "typeahead.js": "latest",
+    "typeahead.js": "0.10.5",
     "select2": "https://github.com/select2/select2.git#stable/3.5",
     "wookmark-jquery": "latest",
     "angular-ui-select": "~0.9.9",

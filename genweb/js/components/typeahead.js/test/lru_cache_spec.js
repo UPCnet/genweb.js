@@ -38,6 +38,5 @@ describe('LruCache', function() {
     expect(this.cache.get('two')).toBeUndefined();
     expect(this.cache.get('three')).toBe(3);
     expect(this.cache.get('four')).toBe(4);
-    expect(this.cache.size).toBe(3);
   });
 });
