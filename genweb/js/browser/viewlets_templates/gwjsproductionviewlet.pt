@@ -2,6 +2,6 @@
                        portal_url portal_state/portal_url"
                condition="not: viewlet/is_devel_mode">
 
-<script tal:attributes="src string:${portal_url}/++genweb++dist/js/vendor.d91879ed.js"></script>
+<script tal:attributes="src string:${portal_url}/++genweb++dist/js/vendor.688501ee.js"></script>
 
 </tal:jsdefines>
