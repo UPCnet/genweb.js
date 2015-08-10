@@ -2,19 +2,10 @@
                        portal_url portal_state/portal_url"
                condition="viewlet/is_devel_mode">
 
-<!-- build:js(.) js/vendor.js -->
-<script tal:attributes="src string:${portal_url}/++genweb++static/js/fileinput.js"></script>
-<script tal:attributes="src string:${portal_url}/++genweb++static/js/customInput.js"></script>
-<script tal:attributes="src string:${portal_url}/++genweb++static/js/jquery.nicescroll.js"></script>
-<script tal:attributes="src string:${portal_url}/++genweb++static/js/prettify.js"></script>
-<script tal:attributes="src string:${portal_url}/++components++root/alertify/alertify.js"></script>
-<script tal:attributes="src string:${portal_url}/++components++root/select2/select2.js"></script>
-<script tal:attributes="src string:${portal_url}/++components++root/handlebars/handlebars.js"></script>
-<script tal:attributes="src string:${portal_url}/++components++root/typeahead.js/dist/typeahead.jquery.js"></script>
-<script tal:attributes="src string:${portal_url}/++components++root/underscore/underscore.js"></script>
-<script tal:attributes="src string:${portal_url}/++genweb++static/js/ios-orientationchange-fix.js"></script>
-
-<script tal:attributes="src string:${portal_url}/++genweb++js/main.js"></script>
-<!-- endbuild -->
+<!-- Beginning of the JS compiled resources -->
+<tal:resources repeat="resource viewlet/get_resources">
+    <script tal:attributes="src string:${portal_url}/${resource}"></script>
+</tal:resources>
+<!-- End of the JS compiled resources -->
 
 </tal:jsdefines>
