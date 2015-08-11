@@ -27,11 +27,11 @@
       name="root"
       />
 
-    <plone:static
+<!--     <plone:static
       directory="dist"
       type="genweb"
       name="dist"
-    />
+    /> -->
 
     <plone:static
       directory="legacy"
