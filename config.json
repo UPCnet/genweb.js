@@ -27,7 +27,7 @@
   "replace_map": {
     "../genweb.js/genweb/js/components": "++components++root",
     "../genweb.core/genweb/core/static": "++genweb++static",
-    "../genweb.js/genweb/genweb/js/legacy": "++genweb++js",
+    "../genweb.js/genweb/js/legacy": "++genweb++js",
     "../genweb.cdn/genweb/cdn/dist": "++genweb++dist"
   },
   "revision_info": {
