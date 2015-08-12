@@ -1,29 +1,36 @@
 {
-  "js": {
-    "development": [
-      "../genweb.core/genweb/core/static/js/fileinput.js",
-      "../genweb.core/genweb/core/static/js/customInput.js",
-      "../genweb.core/genweb/core/static/js/jquery.nicescroll.js",
-      "../genweb.core/genweb/core/static/js/prettify.js",
-      "../genweb.js/genweb/js/components/alertify/alertify.js",
-      "../genweb.js/genweb/js/components/select2/select2.js",
-      "../genweb.js/genweb/js/components/handlebars/handlebars.js",
-      "../genweb.js/genweb/js/components/typeahead.js/dist/typeahead.jquery.js",
-      "../genweb.js/genweb/js/components/underscore/underscore.js",
-      "../genweb.core/genweb/core/static/js/ios-orientationchange-fix.js",
-      "genweb/js/legacy/main.js"
-    ],
-    "production": [
-      "genweb/js/dist/vendor.js"
-    ]
+  "resources": {
+    "genweb": {
+      "js": {
+        "development": [
+          "../genweb.core/genweb/core/static/js/fileinput.js",
+          "../genweb.core/genweb/core/static/js/customInput.js",
+          "../genweb.core/genweb/core/static/js/jquery.nicescroll.js",
+          "../genweb.core/genweb/core/static/js/prettify.js",
+          "../genweb.js/genweb/js/components/alertify/alertify.js",
+          "../genweb.js/genweb/js/components/select2/select2.js",
+          "../genweb.js/genweb/js/components/handlebars/handlebars.js",
+          "../genweb.js/genweb/js/components/typeahead.js/dist/typeahead.jquery.js",
+          "../genweb.js/genweb/js/components/underscore/underscore.js",
+          "../genweb.core/genweb/core/static/js/ios-orientationchange-fix.js",
+          "../genweb.js/genweb/js/legacy/main.js"
+        ],
+        "production": [
+          "../genweb.cdn/genweb/cdn/dist/genweb.js"
+        ]
+      }
+    }
   },
+  "order": [
+    "genweb"
+  ],
   "replace_map": {
     "../genweb.js/genweb/js/components": "++components++root",
     "../genweb.core/genweb/core/static": "++genweb++static",
-    "genweb/js/legacy": "++genweb++js",
-    "genweb/js/dist": "++genweb++dist"
+    "../genweb.js/genweb/genweb/js/legacy": "++genweb++js",
+    "../genweb.cdn/genweb/cdn/dist": "++genweb++dist"
   },
   "revision_info": {
-    "genweb/js/dist/vendor.js": "genweb/js/dist/vendor.b364b967.js"
+    "../genweb.cdn/genweb/cdn/dist/genweb.js": "../genweb.cdn/genweb/cdn/dist/genweb.047e15e6.js"
   }
 }

@@ -14,6 +14,8 @@ class gwJSDevelViewlet(grok.Viewlet):
     grok.viewletmanager(gwJSViewletManager)
     grok.layer(IGenwebTheme)
 
+    resource_type = 'js'
+
     def is_devel_mode(self):
         return api.env.debug_mode()
 
@@ -27,15 +29,17 @@ class gwJSDevelViewlet(grok.Viewlet):
         true_http_path = []
         resources_conf = json.loads(self.read_resource_config_file())
         replace_map = resources_conf['replace_map']
-        devel_resources = resources_conf['js']['development']
-        for resource in devel_resources:
-            found = False
-            for source, destination in replace_map.items():
-                if source in resource:
-                    true_http_path.append(resource.replace(source, destination))
-                    found = True
-            if not found:
-                true_http_path.append(resource)
+
+        for kind in resources_conf['order']:
+            devel_resources = resources_conf['resources'][kind][self.resource_type]['development']
+            for resource in devel_resources:
+                found = False
+                for source, destination in replace_map.items():
+                    if source in resource:
+                        true_http_path.append(resource.replace(source, destination))
+                        found = True
+                if not found:
+                    true_http_path.append(resource)
 
         return true_http_path
 
@@ -45,6 +49,8 @@ class gwJSProductionViewlet(grok.Viewlet):
     grok.viewletmanager(gwJSViewletManager)
     grok.layer(IGenwebTheme)
 
+    resource_type = 'js'
+
     def is_devel_mode(self):
         return api.env.debug_mode()
 
@@ -58,18 +64,19 @@ class gwJSProductionViewlet(grok.Viewlet):
         true_http_path = []
         resources_conf = json.loads(self.read_resource_config_file())
         replace_map = resources_conf['replace_map']
-        production_resources = resources_conf['js']['production']
-        for resource in production_resources:
-            for res_rev_key in resources_conf['revision_info']:
-                if resource == res_rev_key:
-                    resource = resources_conf['revision_info'][res_rev_key]
+        for kind in resources_conf['order']:
+            production_resources = resources_conf['resources'][kind][self.resource_type]['production']
+            for resource in production_resources:
+                for res_rev_key in resources_conf['revision_info']:
+                    if resource == res_rev_key:
+                        resource = resources_conf['revision_info'][res_rev_key]
 
-            found = False
-            for source, destination in replace_map.items():
-                if source in resource:
-                    true_http_path.append(resource.replace(source, destination))
-                    found = True
-            if not found:
-                true_http_path.append(resource)
+                found = False
+                for source, destination in replace_map.items():
+                    if source in resource:
+                        true_http_path.append(resource.replace(source, destination))
+                        found = True
+                if not found:
+                    true_http_path.append(resource)
 
         return true_http_path

@@ -18,7 +18,7 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'genweb/js/dist',
+    dist: '../genweb.cdn/genweb/cdn/dist',
     egg: 'genweb/js'
   };
 
@@ -72,11 +72,13 @@ module.exports = function (grunt) {
     // Empties folders to start fresh
     clean: {
       dist: {
+        options: {force: true},
         files: [{
           dot: true,
           src: [
             '.tmp',
-            '<%= yeoman.dist %>/{,*/}*',
+            // '<%= yeoman.dist %>/{,*/}*',
+            '<%= yeoman.dist %>/genweb.{,*}*.js',
             '!<%= yeoman.dist %>/.git{,*/}*'
           ]
         }]
@@ -96,7 +98,7 @@ module.exports = function (grunt) {
       },
       build: {
         src: [
-          '<%= yeoman.dist %>/{,*/}*.js',
+          '<%= yeoman.dist %>/genweb.js',
         ]
       }
     },
@@ -108,21 +110,21 @@ module.exports = function (grunt) {
       main: {
          options: uglify_options,
          files: {
-             '<%= yeoman.dist %>/vendor.js': '.tmp/vendor.js'
+          '<%= yeoman.dist %>/genweb.js': '.tmp/genweb.js'
         }
       }
     },
 
     concat: {
       options: {},
-      dist: { files: {'.tmp/vendor.js': resource_config.js.development }},
+      dist: { files: {'.tmp/genweb.js': resource_config.resources.genweb.js.development }},
     },
 
     ngAnnotate: {
       options: {
           ngAnnotateOptions: {}
       },
-      dist: { files: {'.tmp/vendor.js': resource_config.js.development }},
+      // dist: { files: {'.tmp/vendor.js': resource_config.resources.common.js.development }},
     },
 
     // Copies remaining files to places other tasks can use
@@ -194,32 +196,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('gwbuild', [
     'clean:dist',
-    // 'replace:build',
-    // 'useminPrepare',
     'concat',
     // 'ngAnnotate',
     'uglify',
     'filerev:build',
     'updateconfig'
-    // 'usemin',
-    // 'replace:postbuild'
-  ]);
-
-  grunt.registerTask('build', [
-    'clean:dist',
-    'wiredep',
-    'useminPrepare',
-    'concurrent:dist',
-    'autoprefixer',
-    'concat',
-    'ngAnnotate',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'filerev',
-    'usemin',
-    'htmlmin'
   ]);
 
   grunt.registerTask('default', [
