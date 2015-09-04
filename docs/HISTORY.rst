@@ -1,11 +1,13 @@
 Changelog
 =========
 
-1.2 (unreleased)
+1.2 (2015-09-04)
 ----------------
 
-- Nothing changed yet.
-
+* Fix [Victor Fernandez de Alba]
+* Finish new resource model [Victor Fernandez de Alba]
+* Disable genweb dist resource dir [Victor Fernandez de Alba]
+* New way of compile external resources [Victor Fernandez de Alba]
 
 1.1 (2015-06-26)
 ----------------
