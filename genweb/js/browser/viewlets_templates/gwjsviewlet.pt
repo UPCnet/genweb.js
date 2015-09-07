@@ -1,6 +1,5 @@
 <tal:jsdefines define="portal_state context/@@plone_portal_state;
-                       portal_url portal_state/portal_url"
-               condition="viewlet/is_devel_mode">
+                       portal_url portal_state/portal_url">
 
 <!-- Beginning of the JS compiled resources -->
 <tal:resources repeat="resource viewlet/get_resources">

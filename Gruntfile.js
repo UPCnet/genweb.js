@@ -195,7 +195,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('gwbuild', [
-    'clean:dist',
+    // 'clean:dist',
     'concat',
     // 'ngAnnotate',
     'uglify',
