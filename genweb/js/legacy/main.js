@@ -190,7 +190,7 @@ $('[type=file]').each(function(index, value) {
       var tags = $('#searchbytag').val();
 
       $('.listingBar').hide();
-      $.get(portal_url + '/' + path + '/search_filtered_content', { q: query, t: tags }, function(data) {
+      $.get(path + '/search_filtered_content', { q: query, t: tags }, function(data) {
           $('#tagslist').html(data);
       });
   });
@@ -317,7 +317,7 @@ function append_new_window_icon()
               var img2 = $(this).next('img:first')[0];
               if (img2 === undefined) // que no tinguin imatge immediatament després <a>
               {
-                $(this).append(new_window_icon);  
+                $(this).append(new_window_icon);
               }
 
 //                var img2 = $(this).next('img:first')[0];

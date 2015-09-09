@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     egg: 'genweb/js'
   };
 
-  var config_file = 'config.json';
+  var config_file = 'genweb/js/config.json';
   var resource_config = grunt.file.readJSON(config_file);
   var uglify_options = {
       sourceMap: true,
