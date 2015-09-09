@@ -1,11 +1,13 @@
 Changelog
 =========
 
-1.3 (unreleased)
+1.3 (2015-09-09)
 ----------------
 
-- Nothing changed yet.
-
+* search by tags [Pilar Marinas]
+* Delete the now not required template [Victor Fernandez de Alba]
+* Fix resource config location [Victor Fernandez de Alba]
+* Refactor new resources viewlets [Victor Fernandez de Alba]
 
 1.2 (2015-09-04)
 ----------------
