@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.4 (unreleased)
+1.4 (2016-01-14)
 ----------------
 
-- Nothing changed yet.
-
+* Icon_blank in edit mode [Corina Riba]
 
 1.3 (2015-09-09)
 ----------------
