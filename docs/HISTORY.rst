@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.5 (unreleased)
+1.5 (2016-01-20)
 ----------------
 
-- Nothing changed yet.
-
+* Fix build [Pilar Marinas]
+* Quitar ruta icon_blank [Pilar Marinas]
 
 1.4 (2016-01-14)
 ----------------
