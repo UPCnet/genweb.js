@@ -13,7 +13,8 @@
           "../genweb.js/genweb/js/components/typeahead.js/dist/typeahead.jquery.js",
           "../genweb.js/genweb/js/components/underscore/underscore.js",
           "../genweb.core/genweb/core/static/js/ios-orientationchange-fix.js",
-          "../genweb.js/genweb/js/legacy/main.js"
+          "../genweb.js/genweb/js/legacy/main.js",
+          "../genweb.js/genweb/js/legacy/links_icon_blank.js"
         ],
         "production": [
           "../genweb.cdn/genweb/cdn/dist/genweb.js"
