@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.6 (unreleased)
+1.6 (2016-01-28)
 ----------------
 
-- Nothing changed yet.
-
+* icon_blank in separate function [Alberto Duran]
+* add new js into config.json [Alberto Duran]
 
 1.5 (2016-01-20)
 ----------------
