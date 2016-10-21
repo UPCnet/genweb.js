@@ -24,7 +24,7 @@
           "../genweb.cdn/genweb/cdn/mixin/comments.js",
           "../genweb.cdn/genweb/cdn/mixin/inline_validation.js",
           "../genweb.cdn/genweb/cdn/mixin/kss-bbb.js",
-          "../genweb.cdn/genweb/cdn/mixin/querywidget.js",
+          "../genweb.upc/genweb/upc/js/plone.formwidget.querystring.querywidget.js",
           "../genweb.cdn/genweb/cdn/mixin/jquery.flot.js",
           "../genweb.cdn/genweb/cdn/mixin/jquery.flot.pie.js",
           "../genweb.cdn/genweb/cdn/mixin/polls.js",
@@ -76,6 +76,7 @@
     "../genweb.js/genweb/js/legacy": "++genweb++js",
     "../genweb.cdn/genweb/cdn/mixin": "++genweb++mixin",
     "../genweb.theme/genweb/theme/bootstrap/js": "++bootstrap++js",
+    "../genweb.upc/genweb/upc/js": "++genwebupc++js",
     "../genweb.cdn/genweb/cdn/dist": "++genweb++dist"
   },
   "revision_info": {
