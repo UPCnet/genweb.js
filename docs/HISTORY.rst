@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.7 (unreleased)
+1.7 (2016-11-03)
 ----------------
 
-- Nothing changed yet.
-
+* generate cdn [Paco Gregori]
+* change js for collections in upc [Alberto Duran]
+* compile all js [Paco Gregori]
 
 1.6 (2016-01-28)
 ----------------
