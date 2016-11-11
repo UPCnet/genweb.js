@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.8 (unreleased)
+1.8 (2016-11-11)
 ----------------
 
-- Nothing changed yet.
-
+* Generate CDN genweb.js [Santi]
 
 1.7 (2016-11-03)
 ----------------
