@@ -47,6 +47,7 @@
           "../genweb.cdn/genweb/cdn/mixin/tiny_mce_gzip.js",
           "../genweb.cdn/genweb/cdn/mixin/jquery.tasksplease.js",
           "../genweb.theme/genweb/theme/bootstrap/js/bootstrap.min.js",
+          "../genweb.cdn/genweb/cdn/mixin/collage.js",
           "../genweb.cdn/genweb/cdn/mixin/datagridfield.js",
           "../genweb.core/genweb/core/static/js/fileinput.js",
           "../genweb.core/genweb/core/static/js/customInput.js",
@@ -80,6 +81,6 @@
     "../genweb.cdn/genweb/cdn/dist": "++genweb++dist"
   },
   "revision_info": {
-    "../genweb.cdn/genweb/cdn/dist/genweb.js": "../genweb.cdn/genweb/cdn/dist/genweb.256df3a2.js"
+    "../genweb.cdn/genweb/cdn/dist/genweb.js": "../genweb.cdn/genweb/cdn/dist/genweb.84eda298.js"
   }
 }
