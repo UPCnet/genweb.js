@@ -272,6 +272,30 @@ $('[type=file]').each(function(index, value) {
   // Append the accessibility thinggy when the link opens in new window
   append_new_window_icon();
 
+
+  $( '#NotAttendeesMsg' ).hide();
+
+  if($( '#SendInvitation' ).length){
+    var attendants = $( '.attendee' ).map(function(){
+                      return $.trim($(this).text());
+                    }).get()
+
+    if(attendants.length <= 0){
+      $( '#SendInvitation' ).remove();
+      $( '#NotAttendeesMsg' ).show();
+    }
+  }
+
+  $( '#SendInvitation' ).on( 'click', function(){
+    dexterity_url = $( this ).attr( 'data-dexterityUrl' );
+    $.ajax({
+        type: 'POST',
+        url: dexterity_url + '/event_to_attendees',
+        success: function(){ }
+      });
+  });
+
+
 }); // End of $(document).ready
 
 // Token input z3c.form widget
