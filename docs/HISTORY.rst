@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.10 (unreleased)
+1.10 (2017-03-09)
 -----------------
 
-- Nothing changed yet.
-
+* add genweb.js cdn [Paco Gregori]
+* Afegir convocatòria en els esdeveniments [Iago López Fernández]
 
 1.9 (2016-11-14)
 ----------------
