@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.11 (unreleased)
+1.11 (2018-03-08)
 -----------------
 
-- Nothing changed yet.
-
+* updated portlet_calendar.js [Roberto Diaz]
 
 1.10 (2017-03-09)
 -----------------
