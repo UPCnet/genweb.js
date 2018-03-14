@@ -5,7 +5,6 @@
 /*global RecaptchaOptions */
 /*global Handlebars */
 
-
 // En aquest script agruparem tots els "document ready" quan sigui necessari
 
 $(document).ready(function () {
@@ -18,23 +17,6 @@ $(document).ready(function () {
 $('[type=file]').each(function(index, value) {
               $(value).customFileInput();
 });
-
-  // var max_iterations = 40;
-  // var intervalId = setInterval(function(event) {
-  //    if (window._gw_i18n !== undefined && window._i18nsucks === true) {
-  //        $('[type=file]').each(function(index, value) {
-  //            $(value).customFileInput();
-  //        });
-  //        clearInterval(intervalId);
-  //    }
-
-  //    max_iterations -= 1;
-  //    if (max_iterations <= 0) {
-  //     clearInterval(intervalId);
-  //     $('.namedblobimage-field input, .namedblobfile-field input').css({position: 'inherit', opacity: '1'});
-  //    }
-
-  // }, 50);
 
   // $('select:not([multiple])').dropkick();
   $('ul.dk_options_inner').addClass('scrollable');
@@ -112,44 +94,6 @@ $('[type=file]').each(function(index, value) {
     if (lititol.length===0) lititol=$('ol.breadcrumb li:eq(2)');// cas amb breadcrumb visible
     var nouTitol=lititol.text();
     if (nouTitol) $('#titol-menu-2').text(nouTitol);*/
-
-  function input_text_default(captcha_type){
-    var text_default="";
-    if (captcha_type==='image')  {
-      text_default=translations.instructions_audio;
-    } else {
-      text_default=translations.instructions_visual;
-    }
-    $('#recaptcha_response_field').val(text_default);
-
-  }
-
-  // RECAPTCHA
-  if (_.hasOwnProperty(window, 'RecaptchaOptions')) {
-    if (RecaptchaOptions !== undefined) {
-      var translations = RecaptchaOptions.custom_translations;
-      $('div.recaptcha_only_if_incorrect_sol').text(translations.incorrect_try_again);
-      $('li.recaptcha_play_again span').text(translations.refresh_btn);
-      $('#recaptcha_reload').attr('alt',translations.refresh_btn);
-      $('a.recaptcha_only_if_image span').text(translations.audio_challenge);
-      $('#recaptcha_switch_audio').attr('alt',translations.audio_challenge);
-      $('a.recaptcha_only_if_audio span').text(translations.visual_challenge);
-      $('#recaptcha_switch_img').attr('alt',translations.visual_challenge);
-      $('li.recaptcha_help span').text(translations.help_btn);
-      $('#recaptcha_whatsthis').attr('alt',translations.help_btn);
-
-      input_text_default('audio');
-
-      $('#recaptcha_switch_type').click(
-        function(){
-          input_text_default(Recaptcha.type);
-        }
-      );
-    }
-  }
-
-
-  // FI RECAPTCHA
 
   // Share popover specific
   $('.share_popover')

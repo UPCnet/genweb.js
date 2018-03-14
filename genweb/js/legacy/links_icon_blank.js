@@ -1,11 +1,13 @@
 function append_new_window_icon()
 {
-    /*  afegeix icon_blank.gif a tots els <a target='_blank'>
+    /*
+        afegeix icon_blank.gif a tots els <a target='_blank'>
         EXCEPCIONS:
         - si troba una imatge (no importa quina imatge sigui, pdf, facebook, twitter, etc, seran vàlides)
             - dins <a>
             - immeditament després <a>
-        - té la classe no_icon_blank            */
+        - té la classe no_icon_blank
+    */
 
     var text_alt =
     {
@@ -32,12 +34,6 @@ function append_new_window_icon()
               {
                 $(this).append(new_window_icon);
               }
-
-//                var img2 = $(this).next('img:first')[0];
-//                if (img2 === undefined) // que no tinguin imatge immediatament després <a>
-//                {
-//                    $(this).append('<img style="margin-left:5px;" class="link_blank" alt="' + text_alt[lang] + '" src="icon_blank.gif">');
-//                }
             }
           }
         }
