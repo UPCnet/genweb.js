@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.12 (unreleased)
+1.12 (2018-03-21)
 -----------------
 
-- Nothing changed yet.
-
+* Actulizar versiones karma [Corina Riba]
+* removed recaptcha code [Roberto Diaz]
 
 1.11 (2018-03-08)
 -----------------
