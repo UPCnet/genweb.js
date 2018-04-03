@@ -153,11 +153,15 @@ $('[type=file]').each(function(index, value) {
 
   var liveSearch = function(data_url) {
     return function findMatches(q, cb) {
-      $.get(data_url + '?q=' + q, function(data) {
+        if (document.getElementById('searchbox_currentfolder_only').checked){
+            cf =  "&path=" + $('#gwsearch .searchSection #searchbox_currentfolder_only').val();
+        } else {
+            cf = ''
+        }
+      $.get(data_url + '?q=' + q + cf, function(data) {
         window._gw_typeahead_last_result = data;
         cb(data);
       });
-
     };
   };
 
@@ -200,7 +204,12 @@ $('[type=file]').each(function(index, value) {
       if (event.keyCode === 13) {
           var text = $(this).val();
           if (!_.findWhere(window._gw_typeahead_last_result, {'title': text})) {
-              window.location.href = $typeahead_dom.attr('data-search-url') + '?SearchableText=' + text;
+              if (document.getElementById('searchbox_currentfolder_only').checked){
+                  cf =  "&path=" + $('#gwsearch .searchSection #searchbox_currentfolder_only').val();
+              } else {
+                  cf = ''
+              }
+              window.location.href = $typeahead_dom.attr('data-search-url') + '?SearchableText=' + text + cf;
           }
 
       }
