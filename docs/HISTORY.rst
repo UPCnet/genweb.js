@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.13 (unreleased)
+1.13 (2018-05-04)
 -----------------
 
-- Nothing changed yet.
-
+* New genweb.js compiled [Corina Riba]
+* Added search in current path. [Francesc Gordillo Cortinez]
 
 1.12 (2018-03-21)
 -----------------
