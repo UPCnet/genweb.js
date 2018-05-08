@@ -20,12 +20,6 @@ $('[type=file]').each(function(index, value) {
 
   // $('select:not([multiple])').dropkick();
   $('ul.dk_options_inner').addClass('scrollable');
-  if ($(window).width() < 640 ) {
-    /* aquestes dues classes que s'afegeixen són necessàries? aparentment funciona igual i llavors funciona bé la vista beta
-    $('.nav-tabs').addClass('nav-stacked');
-    $('.nav-pills').addClass('nav-stacked'); */
-    $(document).scrollTop( $("#content").offset().top ); //aquí saltava un error perquè faltava '#'
-  }
   $('.custom-chekbox[type="checkbox"]').customInput();
   $('.custom-radio[type="radio"]').customInput();
 
