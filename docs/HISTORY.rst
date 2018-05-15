@@ -1,11 +1,13 @@
 Changelog
 =========
 
-1.14 (unreleased)
+1.14 (2018-05-15)
 -----------------
 
-- Nothing changed yet.
-
+* Revert "Added search in current path." [Francesc Gordillo Cortinez]
+*  [Francesc Gordillo Cortinez]
+* This reverts commit 6a4de6856c467e964ed06a3aa8104d7d791006fe. [Francesc Gordillo Cortinez]
+* Update main.js [Corina Riba]
 
 1.13 (2018-05-04)
 -----------------
