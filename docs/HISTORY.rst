@@ -1,10 +1,9 @@
 Changelog
 =========
 
-1.15 (unreleased)
+1.15 (2018-05-17)
 -----------------
 
-- Nothing changed yet.
 
 
 1.14 (2018-05-15)
