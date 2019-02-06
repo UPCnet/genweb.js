@@ -22,7 +22,7 @@ function append_new_window_icon()
     {
         if (!$(this).hasClass('no_icon_blank')) // que no tinguin classe no_icon_blank
         {
-          var new_window_icon = '<img style="margin-left:5px;" class="link_blank" alt="' + text_alt[lang] + '" src="++genweb++static/images/icon_blank.gif">';
+          var new_window_icon = '<img style="margin-left:5px;" class="link_blank" alt="' + text_alt[lang] + '" src="' + portal_url + '/++genweb++static/images/icon_blank.gif">';
           if ($(this).hasClass('contenttype-link')) { // si és un element en el menú
             $(this).find('span').append(new_window_icon);
           } else { // resta casos
