@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.16 (unreleased)
+1.16 (2019-02-14)
 -----------------
 
-- Nothing changed yet.
-
+* Compiled js [Corina Riba]
+* Make icon_blank image accesible for not published folders [Corina Riba]
 
 1.15 (2018-05-17)
 -----------------
