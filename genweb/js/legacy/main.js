@@ -63,7 +63,9 @@ $('[type=file]').each(function(index, value) {
       $(this).prepend('<code>');
       $(this).append('</code>');
       $(this).addClass('prettyprint linenums');
-      prettify = true;
+      var bro = $(this).siblings()[0]
+      if (bro.tagName != "H2")
+        prettify = true;
   });
 
   if ( prettify ) {
