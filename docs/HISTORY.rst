@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.17 (unreleased)
+1.17 (2019-03-18)
 -----------------
 
-- Nothing changed yet.
-
+* New version js compiled [Corina Riba]
+* prettify not used as js for files views [r.ventura]
 
 1.16 (2019-02-14)
 -----------------
