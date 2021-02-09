@@ -330,7 +330,7 @@
                     o.className && (wrapperNode.className = o.className);
                     patternNode = textNode.splitText(match.index);
                     patternNode.splitText(match[0].length);
-                    wrapperNode.appendChild(patternNode.cloneNode(true));
+                    //wrapperNode.appendChild(patternNode.cloneNode(true));
                     textNode.parentNode.replaceChild(wrapperNode, patternNode);
                 }
                 return !!match;
@@ -1050,12 +1050,12 @@
             $input = $(input);
             $wrapper = $(html.wrapper).css(css.wrapper);
             $dropdown = $(html.dropdown).css(css.dropdown);
-            $hint = $input.clone().css(css.hint).css(getBackgroundStyles($input));
-            $hint.val("").removeData().addClass("tt-hint").removeAttr("id name placeholder required").prop("readonly", true).attr({
-                autocomplete: "off",
-                spellcheck: "false",
-                tabindex: -1
-            });
+            // $hint = $input.clone().css(css.hint).css(getBackgroundStyles($input));
+            // $hint.val("").removeData().addClass("tt-hint").removeAttr("id name placeholder required").prop("readonly", true).attr({
+            //     autocomplete: "off",
+            //     spellcheck: "false",
+            //     tabindex: -1
+            // });
             $input.data(attrsKey, {
                 dir: $input.attr("dir"),
                 autocomplete: $input.attr("autocomplete"),
