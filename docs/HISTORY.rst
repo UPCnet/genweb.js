@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.18 (unreleased)
+1.18 (2021-02-22)
 -----------------
 
-- Nothing changed yet.
-
+* ticket problems solved [avanger9]
 
 1.17 (2019-03-18)
 -----------------
