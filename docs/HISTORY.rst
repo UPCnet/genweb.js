@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.19 (unreleased)
+1.19 (2021-02-24)
 -----------------
 
-- Nothing changed yet.
-
+* Cambios menu + grunt [Iago López Fernández]
 
 1.18 (2021-02-22)
 -----------------
