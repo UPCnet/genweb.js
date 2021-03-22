@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.20 (unreleased)
+1.20 (2021-03-22)
 -----------------
 
-- Nothing changed yet.
-
+* Grunt [Iago López Fernández]
+* Arreglar error resultados búsqueda [Iago López Fernández]
 
 1.19 (2021-02-24)
 -----------------
